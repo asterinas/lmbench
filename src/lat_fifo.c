@@ -160,6 +160,7 @@ writer(register int w, register int r)
 		if (read(r, cptr, 1) != 1 ||
 			write(w, cptr, 1) != 1) {
 			    perror("(w) read/write on pipe");
+				break;
 		}
 	}
 }
