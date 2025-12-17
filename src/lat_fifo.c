@@ -89,6 +89,7 @@ initialize(iter_t iterations, void *cookie)
 	switch (state->pid = fork()) {
 	    case 0:
 		handle_scheduler(benchmp_childid(), 1, 1);
+		signal(SIGTERM, exit);
 		state->rd = open(state->filename1, O_RDONLY);
 		state->wr = open(state->filename2, O_WRONLY);
 		writer(state->wr, state->rd);
